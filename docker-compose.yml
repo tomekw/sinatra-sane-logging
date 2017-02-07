@@ -1,0 +1,10 @@
+version: "2"
+services:
+  app:
+    build: .
+    environment:
+      JRUBY_OPTS: --debug
+    volumes:
+      - .:/sinatra-sane-logging
+      - ${HOME}/.ssh:/root/.ssh:ro
+      - ${HOME}/.gem:/root/.gem:rw

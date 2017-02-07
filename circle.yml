@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker build --rm=false -t tomekw/sinatra-sane-logging .
+
+test:
+  override:
+    - docker run --rm tomekw/sinatra-sane-logging rubocop
+    - docker run --rm tomekw/sinatra-sane-logging rspec spec
