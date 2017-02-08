@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-sane-logging (0.1.0)
+    sinatra-sane-logging (0.2.0)
       sinatra
 
 GEM
