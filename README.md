@@ -17,7 +17,7 @@ It uses `Rack::Commonlogger` under the hood so the logger has to respond to:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "sinatra-sane-logging"
+gem "sinatra-sane-logging", require: "sinatra/sane_logging"
 ```
 
 And then execute:
