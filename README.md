@@ -40,7 +40,7 @@ class FileLogger < Logger
 end
 
 class App < Sinatra::Base
-  include Sinatra::SaneLogging
+  register Sinatra::SaneLogging
 
   sane_logging logger: Filelogger.new(File.open("log/app.log", "a+").tap { |log_file| log_file.sync = true })
 

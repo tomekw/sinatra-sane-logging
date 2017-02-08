@@ -8,7 +8,7 @@ RSpec.describe Sinatra::SaneLogging do
   end
 
   class TestApp < Sinatra::Base
-    include Sinatra::SaneLogging
+    register Sinatra::SaneLogging
 
     sane_logging logger: TestLogger.new(self)
 
