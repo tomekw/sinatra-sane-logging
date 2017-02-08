@@ -10,7 +10,7 @@ RSpec.describe Sinatra::SaneLogging do
   class TestApp < Sinatra::Base
     register Sinatra::SaneLogging
 
-    sane_logging logger: TestLogger.new(self)
+    set :sane_logger, TestLogger.new(self)
 
     get "/" do
       logger.info "OK"

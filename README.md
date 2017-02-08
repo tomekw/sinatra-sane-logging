@@ -42,7 +42,7 @@ end
 class App < Sinatra::Base
   register Sinatra::SaneLogging
 
-  sane_logging logger: Filelogger.new(File.open("log/app.log", "a+").tap { |log_file| log_file.sync = true })
+  set :sane_logger, Filelogger.new(File.open("log/app.log", "a+").tap { |log_file| log_file.sync = true })
 
   get "/" do
     logger.info "OK"

@@ -1,15 +1,22 @@
+require "rack"
 require "sinatra/base"
 
 module Sinatra
   module SaneLogging
-    def sane_logging(logger:)
-      configure do
-        use Rack::CommonLogger, logger
+    class NullLogger < Rack::NullLogger
+      def flush; end
+    end
+
+    def self.registered(app)
+      app.set :sane_logger, NullLogger.new(app)
+
+      app.configure do
+        app.use Rack::CommonLogger, app.sane_logger
       end
 
-      before do
-        env["rack.errors"] = logger
-        env["rack.logger"] = logger
+      app.before do
+        env["rack.errors"] = app.sane_logger
+        env["rack.logger"] = app.sane_logger
       end
     end
   end
